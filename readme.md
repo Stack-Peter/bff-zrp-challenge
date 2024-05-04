@@ -8,4 +8,4 @@ A API de Pokémon foi desenvolvida utilizando Node.js e Express.js. Ela fornece 
 
 ## Github Workflow
 
-Uma pipeline de integração contínua foi configurado utilizando Github Actions. A cada push na branch `main`, o workflow é acionado. Ele constrói a imagem Docker da aplicação, a envia para o AWS ECR e, em seguida, atualiza a implantação da AWS App Runner com a nova imagem.
+Uma pipeline de integração contínua foi configurada utilizando Github Actions. A cada push na branch `main`, o workflow é acionado. Ele constrói a imagem Docker da aplicação, a envia para o AWS ECR e, em seguida, atualiza a implantação da AWS App Runner com a nova imagem.
