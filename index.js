@@ -1,26 +1,12 @@
 import express from "express";
-import {
-  getAllPokemons,
-  searchPokemonByName,
-  searchPokemonByNameAndType,
-  searchPokemonByType,
-} from "./src/controllers/pokemonController.js";
+import cors from "./src/middlewares/cors.js";
+import router from "./src/routes.js";
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello! You found me!");
-});
-
-app.get("/pokemon/search/nameAndType/:partialName/:type", searchPokemonByNameAndType);
-app.get("/pokemon/search/name/:partialName", searchPokemonByName);
-app.get("/pokemon/search/type/:type", searchPokemonByType);
-app.get("/pokemons", getAllPokemons);
+app.use(express.json());
+app.use(cors);
+app.use(router);
 
 const port = process.env.PORT ?? 4000;
 

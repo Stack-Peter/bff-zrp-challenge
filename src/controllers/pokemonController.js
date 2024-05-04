@@ -1,52 +1,51 @@
-import {
-  findByName,
-  findByNameAndType,
-  findByType,
-  findAll,
-} from "../services/pokemonService.js";
+import PokemonService from "../services/PokemonService.js";
 
-export const searchPokemonByName = async (req, res) => {
-  const { partialName } = req.params;
+class PokemonController {
+  async searchPokemonByName(req, res) {
+    const { partialName } = req.params;
 
-  try {
-    const pokemons = await findByName(partialName);
-    res.json(pokemons);
-  } catch (error) {
-    console.error("Error searching Pokémon by name:", error);
-    res.status(500).json({ error: "Internal server error" });
+    try {
+      const pokemons = await PokemonService.findByName(partialName);
+      res.json(pokemons);
+    } catch (error) {
+      console.error("Error searching Pokémon by name:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
-};
 
-export const searchPokemonByNameAndType = async (req, res) => {
-  const { partialName, type } = req.params;
+  async searchPokemonByNameAndType(req, res) {
+    const { partialName, type } = req.params;
 
-  try {
-    const pokemons = await findByNameAndType(partialName, type);
-    res.json(pokemons);
-  } catch (error) {
-    console.error("Error searching Pokémon by name and type:", error);
-    res.status(500).json({ error: "Internal server error" });
+    try {
+      const pokemons = await PokemonService.findByNameAndType(partialName, type);
+      res.json(pokemons);
+    } catch (error) {
+      console.error("Error searching Pokémon by name and type:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
-};
 
-export const searchPokemonByType = async (req, res) => {
-  const { type } = req.params;
+  async searchPokemonByType(req, res) {
+    const { type } = req.params;
 
-  try {
-    const pokemons = await findByType(type);
-    res.json(pokemons);
-  } catch (error) {
-    console.error("Error searching Pokémon by name and type:", error);
-    res.status(500).json({ error: "Internal server error" });
+    try {
+      const pokemons = await PokemonService.findByType(type);
+      res.json(pokemons);
+    } catch (error) {
+      console.error("Error searching Pokémon by name and type:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
-};
 
-export const getAllPokemons = async (req, res) => {
-  try {
-    const pokemons = await findAll();
-    res.json(pokemons);
-  } catch (error) {
-    console.error("Error getting all Pokémon:", error);
-    res.status(500).json({ error: "Internal server error" });
+  async getAllPokemons(req, res) {
+    try {
+      const pokemons = await PokemonService.findAll();
+      res.json(pokemons);
+    } catch (error) {
+      console.error("Error getting all Pokémon:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
-};
+}
+
+export default PokemonController;
