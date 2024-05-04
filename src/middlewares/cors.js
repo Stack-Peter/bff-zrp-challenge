@@ -1,7 +1,7 @@
 const cors = (request, response, next) => {
   response.setHeader(
     "Access-Control-Allow-Origin",
-    "https://6635d420f6a8feaff0a63dc6--fabulous-lamington-76c8c4.netlify.app"
+    "https://fe-zrp-challenge.netlify.app"
   );
   response.setHeader("Access-Control-Allow-Methods", "*");
   response.setHeader("Access-Control-Allow-Headers", "*");
